@@ -23,7 +23,6 @@ docker build . -t yt-dlp-batch-builder
 ### Part 2: Windows (PowerShell)
 ```
 Rename-Item -Path "C:\Users\$env:USERNAME\Downloads\Watch later - YouTube.htm" -NewName watch_later.html    # TODO quote enclose only the whitespace term?
-rm "C:\Users\$env:USERNAME\Downloads\Watch later - YouTube_files\" -Recurse
 docker run `
     -v C:\Users\$env:USERNAME\Downloads\watch_later.html:/app/watch_later.html `
     --name yt-dlp-batch-builder `
@@ -44,6 +43,7 @@ docker run `
     --sponsorblock-remove all `
     --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")'
 docker cp yt-dlp:/downloads/. C:\Users\$($env:USERNAME)\Videos\youtube
+rm "C:\Users\$env:USERNAME\Downloads\Watch later - YouTube_files\" -Recurse
 rm C:\Users\$($env:USERNAME)\Videos\youtube\yt_dlp_batch.txt
 ```
 
@@ -56,11 +56,10 @@ docker run \
     yt-dlp-batch-builder \
     --input-filepath watch_later.html \
     --output-filepath yt_dlp_batch.txt
-rm -rf ~/Downloads/watch_later.html
 docker cp yt-dlp-batch-builder:/app/yt_dlp_batch.txt ~/Downloads/
 # optionally edit yt_dlp_batch.txt
 docker run \
-    -v "~/Downloads/yt_dlp_batch.txt:/downloads/yt_dlp_batch.txt \
+    -v ~/Downloads/yt_dlp_batch.txt:/downloads/yt_dlp_batch.txt \
     --name yt-dlp \
     jauderho/yt-dlp:latest \
     -a yt_dlp_batch.txt \
@@ -70,6 +69,7 @@ docker run \
     --sponsorblock-remove all \
     --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")'
 docker cp yt-dlp:/downloads/. ~/Videos/youtube
+rm ~/Downloads/watch_later.html
 rm ~/Videos/youtube/yt_dlp_batch.txt
 ```
 
