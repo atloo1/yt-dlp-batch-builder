@@ -28,7 +28,8 @@ docker run `
     -v C:\Users\$env:USERNAME\Downloads\watch_later.html:/app/watch_later.html `
     --name yt-dlp-batch-builder `
     yt-dlp-batch-builder `
-    --watch-later-html-filepath watch_later.html
+    --input-filepath watch_later.html `
+    --output-filepath yt_dlp_batch.txt
 Remove-Item -Path C:\Users\$env:USERNAME\Downloads\watch_later.html
 docker cp yt-dlp-batch-builder:/app/yt_dlp_batch.txt C:\Users\$env:USERNAME\Downloads\
 # optionally edit yt_dlp_batch.txt
@@ -49,13 +50,12 @@ rm C:\Users\$($env:USERNAME)\Videos\youtube\yt_dlp_batch.txt
 ### Part 2: Unix
 ```
 mv ~/Downloads/"Watch later - YouTube.html" ~/Downloads/watch_later.html
-rm -r ~/Downloads/"Watch later - YouTube/"
-docker run -v ~/Downloads/watch_later.html:/app/watch_later.html --name yt-dlp-batch-builder yt-dlp-batch-builder --watch-later-html-filepath watch_later.html
 docker run \
     -v ~/Downloads/watch_later.html:/app/watch_later.html \
     --name yt-dlp-batch-builder \
     yt-dlp-batch-builder \
-    --watch-later-html-filepath watch_later.html
+    --input-filepath watch_later.html \
+    --output-filepath yt_dlp_batch.txt
 rm ~/Downloads/watch_later.html
 docker cp yt-dlp-batch-builder:/app/yt_dlp_batch.txt ~/Downloads/
 # optionally edit yt_dlp_batch.txt
