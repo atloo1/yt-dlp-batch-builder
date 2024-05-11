@@ -7,14 +7,7 @@ The `yt-dlp-batch-builder` container runs a Python parser of the HTML of your "W
 ## Usage instructions:
 
 ### Part 1
-Download [your YouTube "Watch later" playlist](https://www.youtube.com/playlist?list=WL). 
-
-Defaults assumed:
-
-Windows: `C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube.htm"`
-
-Unix: `~/Downloads/"Watch later - YouTube.html"`
-
+Download [your YouTube "Watch later" playlist](https://www.youtube.com/playlist?list=WL). Defaults are assumed: `C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube.htm"` for Windows & `~/Downloads/"Watch later - YouTube.html"` for Unix.
 ```
 cd <this-repo-root>
 docker build . -t yt-dlp-batch-builder
@@ -42,7 +35,7 @@ docker run `
     --sponsorblock-remove all `
     --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")'
 docker cp yt-dlp:/downloads/. C:\Users\$env:USERNAME\Videos\youtube
-rm "C:\Users\$env:USERNAME\Downloads\Watch later - YouTube_files\" -Recurse
+rm C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube_files\" -Recurse
 rm C:\Users\$env:USERNAME\Downloads\watch_later.html
 rm C:\Users\$env:USERNAME\Downloads\yt_dlp_batch.txt
 rm C:\Users\$env:USERNAME\Videos\youtube\yt_dlp_batch.txt
