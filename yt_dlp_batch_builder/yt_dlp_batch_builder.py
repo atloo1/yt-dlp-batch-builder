@@ -36,7 +36,7 @@ def yt_dlp_batch_builder(
 
     with open(output_filepath, 'w') as f:
         for vid_id, vid_title, channel in zip(vid_ids, vid_titles, channels):
-            f.write(f'"https://www.youtube.com/watch?v={vid_id}\"\t# {vid_title} - {channel}\n')
+            f.write(f'https://www.youtube.com/watch?v={vid_id}\t# {vid_title} - {channel}\n')
 
 
 @click.command()
