@@ -29,11 +29,10 @@ docker run `
     yt-dlp-batch-builder `
     --input-filepath watch_later.html `
     --output-filepath yt_dlp_batch.txt
-Remove-Item -Path C:\Users\$env:USERNAME\Downloads\watch_later.html
-docker cp yt-dlp-batch-builder:/app/yt_dlp_batch.txt C:\Users\$env:USERNAME\Downloads\
+docker cp yt-dlp-batch-builder:/app/yt_dlp_batch.txt C:\Users\$env:USERNAME\Downloads
 # optionally edit yt_dlp_batch.txt
 docker run `
-    -v C:\Users\$($env:USERNAME)\Downloads\yt_dlp_batch.txt:/downloads/yt_dlp_batch.txt `
+    -v C:\Users\$env:USERNAME\Downloads\yt_dlp_batch.txt:/downloads/yt_dlp_batch.txt `
     --name yt-dlp `
     jauderho/yt-dlp:latest `
     -a yt_dlp_batch.txt `
@@ -42,9 +41,11 @@ docker run `
     --restrict-filenames `
     --sponsorblock-remove all `
     --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")'
-docker cp yt-dlp:/downloads/. C:\Users\$($env:USERNAME)\Videos\youtube
+docker cp yt-dlp:/downloads/. C:\Users\$env:USERNAME\Videos\youtube
 rm "C:\Users\$env:USERNAME\Downloads\Watch later - YouTube_files\" -Recurse
-rm C:\Users\$($env:USERNAME)\Videos\youtube\yt_dlp_batch.txt
+rm C:\Users\$env:USERNAME\Downloads\watch_later.html
+rm C:\Users\$env:USERNAME\Downloads\yt_dlp_batch.txt
+rm C:\Users\$env:USERNAME\Videos\youtube\yt_dlp_batch.txt
 ```
 
 ### Part 2: Unix
