@@ -56,7 +56,7 @@ docker run \
     yt-dlp-batch-builder \
     --input-filepath watch_later.html \
     --output-filepath yt_dlp_batch.txt
-rm ~/Downloads/watch_later.html
+rm -rf ~/Downloads/watch_later.html
 docker cp yt-dlp-batch-builder:/app/yt_dlp_batch.txt ~/Downloads/
 # optionally edit yt_dlp_batch.txt
 docker run \
