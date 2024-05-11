@@ -77,7 +77,12 @@ rm ~/Videos/youtube/yt_dlp_batch.txt
 ### Part 3
 `docker rm yt-dlp-batch-builder yt-dlp`
 
-## Development
+## For developers:
+
+### Prerequisites
+[poetry](https://github.com/python-poetry/install.python-poetry.org?tab=readme-ov-file#python-poetry-installer)
+
+### Instructions:
 ```
 cd <this-repo-root>
 poetry install
