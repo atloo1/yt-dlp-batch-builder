@@ -7,7 +7,13 @@ The `yt-dlp-batch-builder` container runs a Python parser of the HTML of your "W
 ## Usage instructions:
 
 ### Part 1
-Download [your YouTube "Watch later" playlist](https://www.youtube.com/playlist?list=WL). It's assumed to be the default `Watch later - YouTube.htm` in your downloads directory (`C:\Users\$env:USERNAME\Downloads\` in Windows & `~/Downloads/` in Unix).
+Download [your YouTube "Watch later" playlist](https://www.youtube.com/playlist?list=WL). 
+
+Defaults assumed:
+
+Windows: `C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube.htm"`
+
+Unix: `~/Downloads/"Watch later - YouTube.html"`
 
 ```
 cd <this-repo-root>
@@ -16,7 +22,7 @@ docker build . -t yt-dlp-batch-builder
 
 ### Part 2: Windows (PowerShell)
 ```
-Rename-Item -Path "C:\Users\$env:USERNAME\Downloads\Watch later - YouTube.htm" -NewName watch_later.html
+Rename-Item -Path "C:\Users\$env:USERNAME\Downloads\Watch later - YouTube.htm" -NewName watch_later.html    # TODO quote enclose only the whitespace term?
 rm "C:\Users\$env:USERNAME\Downloads\Watch later - YouTube_files\" -Recurse
 docker run `
     -v C:\Users\$env:USERNAME\Downloads\watch_later.html:/app/watch_later.html `
