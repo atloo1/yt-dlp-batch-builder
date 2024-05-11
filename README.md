@@ -22,7 +22,7 @@ docker build . -t yt-dlp-batch-builder
 
 ### Part 2: Windows (PowerShell)
 ```
-Rename-Item -Path "C:\Users\$env:USERNAME\Downloads\Watch later - YouTube.htm" -NewName watch_later.html    # TODO quote enclose only the whitespace term?
+Rename-Item -Path C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube.htm" -NewName watch_later.html
 docker run `
     -v C:\Users\$env:USERNAME\Downloads\watch_later.html:/app/watch_later.html `
     --name yt-dlp-batch-builder `
