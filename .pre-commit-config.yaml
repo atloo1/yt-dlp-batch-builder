@@ -24,9 +24,15 @@ repos:
       - id: poetry-check
       - id: poetry-export
       - id: poetry-lock
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: e5ea6670624c24f8321f6328ef3176dbba76db46
+    hooks:
+    # https://github.com/pre-commit/mirrors-mypy?tab=readme-ov-file#using-mypy-with-pre-commit
+      - id: mypy
   - repo: 'https://github.com/pre-commit/pre-commit'
     rev: v3.6.2
     hooks:
+    # https://github.com/pre-commit/pre-commit/blob/main/.pre-commit-hooks.yaml
       - id: validate_manifest
   - repo: 'https://github.com/pre-commit/pre-commit-hooks'
     rev: v3.2.0
