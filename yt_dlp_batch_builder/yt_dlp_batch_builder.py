@@ -11,7 +11,7 @@ poetry run python yt_dlp_batch_builder/yt_dlp_batch_builder.py \
 
 import re
 from pathlib import Path
-from typing import List, Optional, Union
+from typing import List, Union
 
 import click
 
@@ -19,8 +19,8 @@ R_VID_ID_INDEXED = re.compile(r'index=\d+')
 
 
 def yt_dlp_batch_builder(
-        input_filepath: Union[Path, str],
-        output_filepath: Union[Path, str],
+    input_filepath: Union[Path, str],
+    output_filepath: Union[Path, str],
 ):
     """Write a yt-dlp batch file for a Watch later page.
 
@@ -43,8 +43,8 @@ def yt_dlp_batch_builder(
 @click.option('--input-filepath', type=click.Path(exists=True))
 @click.option('--output-filepath', type=click.Path())
 def _main(
-        input_filepath: str,
-        output_filepath: str,
+    input_filepath: str,
+    output_filepath: str,
 ):
     """Private click CLI for yt_dlp_batch_builder()."""
     input_filepath = Path(input_filepath).resolve()
