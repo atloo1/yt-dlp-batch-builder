@@ -14,6 +14,8 @@ docker build . -t yt-dlp-batch-builder
 ```
 
 ### Part 2: Windows (PowerShell)
+
+#### programmatic
 ```
 Rename-Item -Path C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube.htm" -NewName watch_later.html
 docker run `
@@ -41,7 +43,19 @@ rm C:\Users\$env:USERNAME\Downloads\yt_dlp_batch.txt
 rm C:\Users\$env:USERNAME\Videos\youtube\yt_dlp_batch.txt
 ```
 
-### Part 2: Unix
+#### interactive
+```
+docker run `
+    --name yt-dlp `
+    --entrypoint /bin/sh `
+    jauderho/yt-dlp:latest `
+    -c "sleep infinity"
+docker exec -it yt-dlp /bin/sh
+```
+
+### Part 2: Unix (Bash)
+
+#### programmatic
 ```
 mv ~/Downloads/"Watch later - YouTube.html" ~/Downloads/watch_later.html
 docker run \
@@ -66,6 +80,17 @@ docker cp yt-dlp:/downloads/. ~/Videos/youtube
 rm ~/Downloads/watch_later.html
 rm ~/Videos/youtube/yt_dlp_batch.txt
 ```
+
+#### interactive
+```
+docker run \
+    --name yt-dlp \
+    --entrypoint /bin/sh \
+    jauderho/yt-dlp:latest \
+    -c "sleep infinity"
+docker exec -it yt-dlp /bin/sh
+```
+
 
 ### Part 3
 `docker rm yt-dlp-batch-builder yt-dlp`
