@@ -78,6 +78,7 @@ docker run \
     --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")'
 docker cp yt-dlp:/downloads/. ~/Videos/youtube
 rm ~/Downloads/watch_later.html
+rm ~/Downloads/yt_dlp_batch.txt
 rm ~/Videos/youtube/yt_dlp_batch.txt
 ```
 
