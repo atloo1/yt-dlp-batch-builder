@@ -33,9 +33,10 @@ docker run `
     -a yt_dlp_batch.txt `
     -f 247+251 `
     -o "%(title)s_%(channel)s.%(ext)s" `
+    --embed-chapters `
+    --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")' `
     --restrict-filenames `
-    --sponsorblock-remove all `
-    --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")'
+    --sponsorblock-remove all
 docker cp yt-dlp:/downloads/. C:\Users\$env:USERNAME\Videos\youtube
 rm C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube_files\" -Recurse
 rm C:\Users\$env:USERNAME\Downloads\watch_later.html
@@ -73,9 +74,10 @@ docker run \
     -a yt_dlp_batch.txt \
     -f 247+251 \
     -o "%(title)s_%(channel)s.%(ext)s" \
+    --embed-chapters \
+    --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")' \
     --restrict-filenames \
-    --sponsorblock-remove all \
-    --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")'
+    --sponsorblock-remove all 
 docker cp yt-dlp:/downloads/. ~/Videos/youtube
 rm ~/Downloads/watch_later.html
 rm ~/Downloads/yt_dlp_batch.txt
