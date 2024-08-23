@@ -96,7 +96,9 @@ docker exec -it yt-dlp /bin/sh
 
 
 ### Part 3
-`docker rm yt-dlp-batch-builder yt-dlp`
+```
+docker rm yt-dlp-batch-builder yt-dlp
+```
 
 ## For developers:
 
