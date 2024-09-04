@@ -72,7 +72,7 @@ docker run \
     --name yt-dlp \
     jauderho/yt-dlp:latest \
     -a yt_dlp_batch.txt \
-    -f 247+251 \
+    -f 609+140 \
     -o "%(title)s_%(channel)s.%(ext)s" \
     --embed-chapters \
     --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")' \
