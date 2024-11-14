@@ -2,7 +2,7 @@
 
 Download your YouTube "Watch later" playlist w/ only [Docker](https://www.docker.com/products/docker-desktop/) as a prerequisite.
 
-The `yt-dlp-batch-builder` container runs a Python parser of the HTML of your "Watch later" playlist. This is used over the API, which [requires authentication in a browser](https://developers.google.com/youtube/v3/quickstart/python), just creating an extra step. `yt_dlp_batch.txt` results, which is input for the `yt-dlp` container whose arguments are [documented here](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#usage-and-options). In summary, 720p VP9 + 128 kbps AAC videos truncated by [SponsorBlock](https://github.com/ajayyy/SponsorBlock?tab=readme-ov-file#sponsorblock) are downloaded. Intermediate files & containers are also cleaned up.
+The `yt-dlp-batch-builder` container runs a Python parser of the HTML of your "Watch later" playlist. This is used over the API, which [requires authentication in a browser](https://developers.google.com/youtube/v3/quickstart/python), just creating an extra step. `yt_dlp_batch.txt` results, which is input for the `yt-dlp` container whose arguments are [documented here](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#usage-and-options). Here, 720p videos favoring open codecs & containers (AV1, VP9, Opus, WebM) truncated by [SponsorBlock](https://github.com/ajayyy/SponsorBlock?tab=readme-ov-file#sponsorblock) are downloaded. Intermediate files & containers are also cleaned up.
 
 ## Usage instructions:
 
@@ -31,9 +31,10 @@ docker run `
     --name yt-dlp `
     jauderho/yt-dlp:latest `
     -a yt_dlp_batch.txt `
-    -f 609+140 `
+    -f "bv[height=720]+ba[acodec=opus][ext=webm]" `
     -o "%(title)s_%(channel)s.%(ext)s" `
     --embed-chapters `
+    --embed-subs `
     --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")' `
     --restrict-filenames `
     --sponsorblock-remove all
@@ -72,12 +73,13 @@ docker run \
     --name yt-dlp \
     jauderho/yt-dlp:latest \
     -a yt_dlp_batch.txt \
-    -f 247+251 \
+    -f "bv[height=720]+ba[acodec=opus][ext=webm]" \
     -o "%(title)s_%(channel)s.%(ext)s" \
     --embed-chapters \
+    --embed-subs \
     --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")' \
     --restrict-filenames \
-    --sponsorblock-remove all 
+    --sponsorblock-remove all
 docker cp yt-dlp:/downloads/. ~/Videos/youtube
 rm ~/Downloads/watch_later.html
 rm ~/Downloads/yt_dlp_batch.txt
