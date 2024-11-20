@@ -60,3 +60,7 @@ repos:
       - id: requirements-txt-fixer
       - id: sort-simple-yaml
       - id: trailing-whitespace
+  - repo: https://github.com/atloo1/check-pyproject-incremented/
+    rev: 2f57272e4b099d287fca54ec5542580664fb4c4c
+    hooks:
+      - id: check-pyproject-incremented
