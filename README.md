@@ -4,16 +4,17 @@ Download your YouTube "Watch later" playlist w/ only [Docker](https://www.docker
 
 The `yt-dlp-batch-builder` container runs a Python parser of the HTML of your "Watch later" playlist. This is used over the API, which [requires authentication in a browser](https://developers.google.com/youtube/v3/quickstart/python), just creating an extra step. `yt_dlp_batch.txt` results, which is input for the `yt-dlp` container whose arguments are [documented here](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#usage-and-options). Here, 720p videos favoring open codecs & containers (AV1, VP9, Opus, WebM) truncated by [SponsorBlock](https://github.com/ajayyy/SponsorBlock?tab=readme-ov-file#sponsorblock) are downloaded. Intermediate files & containers are also cleaned up.
 
-## Usage instructions:
+## isage instructions:
 
-### Part 1
+### part 1
+
 Download [your YouTube "Watch later" playlist](https://www.youtube.com/playlist?list=WL). Defaults are assumed: `C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube.htm"` for Windows & `~/Downloads/"Watch later - YouTube.html"` for Unix.
 ```
 cd <this-repo-root>
 docker build . -t yt-dlp-batch-builder
 ```
 
-### Part 2: Windows (PowerShell)
+### part 2: Windows (PowerShell)
 
 #### programmatic
 ```
@@ -55,7 +56,7 @@ docker run `
 docker exec -it yt-dlp /bin/sh
 ```
 
-### Part 2: Unix (Bash)
+### part 2: Unix (Bash)
 
 #### programmatic
 ```
@@ -96,20 +97,33 @@ docker run \
 docker exec -it yt-dlp /bin/sh
 ```
 
-
-### Part 3
+### part 3
 ```
 docker rm yt-dlp-batch-builder yt-dlp
 ```
 
-## For developers:
+## use Python interpreter (develop, run w/o Docker):
 
-### Prerequisites
-[poetry](https://github.com/python-poetry/install.python-poetry.org?tab=readme-ov-file#python-poetry-installer)
+### prerequisites
 
-### Instructions:
+- [poetry](https://github.com/python-poetry/install.python-poetry.org?tab=readme-ov-file#python-poetry-installer)
+
+### run
 ```
-cd <this-repo-root>
+poetry install --without dev
+poetry run python -m yt_dlp_batch_builder.yt_dlp_batch_builder --help
+```
+
+### develop
+
+#### prerequisites
+
+- [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation)
+
+### 1st time setup
+```
+pyenv install 3.9 --skip-existing   # or your choice
+pyenv local 3.9   # or your choice
 poetry install
 poetry run pre-commit install
 ```
