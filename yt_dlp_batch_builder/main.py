@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 """
-Write a yt-dlp batch file for HTML of a YouTube Watch later playlist.
+Write a yt-dlp batch file for a YouTube Watch later playlist.
 
 Run with:
 
-poetry run python yt_dlp_batch_builder/yt_dlp_batch_builder.py \
+poetry run python -m yt_dlp_batch_builder.main \
     --input-filepath ~/Downloads/"Watch later - YouTube.html" \
     --output-filepath ~/Downloads/yt_dlp_batch.txt
 """
@@ -18,12 +17,12 @@ import click
 R_VID_ID_INDEXED = re.compile(r'index=\d+')
 
 
-def yt_dlp_batch_builder(
+def main(
     input_filepath: Union[Path, str],
     output_filepath: Union[Path, str],
 ):
     """
-    Write a yt-dlp batch file for a Watch later page.
+    Write a yt-dlp batch file for a YouTube Watch later playlist.
 
     :param input_filepath: Watch later playlist HTML filepath
     :param output_filepath: filepath of resultant yt-dlp batch file
@@ -47,11 +46,11 @@ def _main(
     input_filepath: Union[Path, str],
     output_filepath: Union[Path, str],
 ):
-    """Private click CLI for yt_dlp_batch_builder()."""
+    """Private click CLI for main()."""
     input_filepath = Path(input_filepath).resolve()
     output_filepath = Path(output_filepath).resolve()
 
-    yt_dlp_batch_builder(input_filepath, output_filepath)
+    main(input_filepath, output_filepath)
     click.echo(f'SUCCESS: see {output_filepath}')
 
 

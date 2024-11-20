@@ -42,4 +42,4 @@ USER appuser
 COPY . .
 
 # Run the application.
-ENTRYPOINT ["python", "yt_dlp_batch_builder/yt_dlp_batch_builder.py"]
+ENTRYPOINT ["python", "-m", "yt_dlp_batch_builder.main"]
