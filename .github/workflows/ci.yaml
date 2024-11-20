@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+      - feat
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    env:
+      # https://github.com/pre-commit/pre-commit.com/blob/main/sections/advanced.md#temporarily-disabling-hooks
+      # mutliple hooks: comma separated list, whitespace OK
+      # poetry-lock: different dependencies btw ARM cloud runner & x86 local dev
+      SKIP: poetry-lock
+
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.9']
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: 'setup w/ poetry (Python ${{matrix.python-version}})'
+        uses: packetcoders/action-setup-cache-python-poetry@main
+        with:
+          python-version: ${{matrix.python-version}}
+          poetry-version: 1.8.3
+
+      - name: pre-commit
+        run: |
+          poetry run pre-commit install
+          poetry run pre-commit run --all-files
