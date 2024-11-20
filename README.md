@@ -1,10 +1,14 @@
 # yt-dlp-batch-builder
 
-Download your YouTube "Watch later" playlist w/ only [Docker](https://www.docker.com/products/docker-desktop/) as a prerequisite.
+Download your YouTube "Watch later" playlist w/ only Docker as a prerequisite.
 
 The `yt-dlp-batch-builder` container runs a Python parser of the HTML of your "Watch later" playlist. This is used over the API, which [requires authentication in a browser](https://developers.google.com/youtube/v3/quickstart/python), just creating an extra step. `yt_dlp_batch.txt` results, which is input for the `yt-dlp` container whose arguments are [documented here](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#usage-and-options). Here, 720p videos favoring open codecs & containers (AV1, VP9, Opus, WebM) truncated by [SponsorBlock](https://github.com/ajayyy/SponsorBlock?tab=readme-ov-file#sponsorblock) are downloaded. Intermediate files & containers are also cleaned up.
 
 ## use w/ Docker (recommended):
+
+### prerequisites
+
+- [Docker](https://docs.docker.com/get-started/get-docker/)
 
 ### part 1
 
