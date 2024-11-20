@@ -53,7 +53,6 @@ repos:
           - '--allow-missing-credentials'
       - id: detect-private-key
       - id: end-of-file-fixer
-      - id: fix-encoding-pragma
       - id: name-tests-test
       - id: pretty-format-json
         args:
