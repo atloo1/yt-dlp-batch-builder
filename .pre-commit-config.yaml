@@ -61,6 +61,6 @@ repos:
       - id: sort-simple-yaml
       - id: trailing-whitespace
   - repo: https://github.com/atloo1/check-pyproject-incremented/
-    rev: 2f57272e4b099d287fca54ec5542580664fb4c4c
+    rev: 19801ddf2fe2b13747a5c1879f4d17ad7b7e7bd5
     hooks:
       - id: check-pyproject-incremented
