@@ -1,0 +1,24 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "packageRules": [
+    {
+      "groupName": "patch &/or minor dependency upgrade(s)",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "prTitle": "patch &/or minor dependency upgrade(s)"
+    },
+    {
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "prTitle": "major dependency upgrade: {{depName}} {{currentVersion}} \u2192 {{newVersion}}"
+    }
+  ],
+  "prConcurrentLimit": 0,
+  "prHourlyLimit": 0
+}
