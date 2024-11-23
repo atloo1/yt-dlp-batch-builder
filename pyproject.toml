@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "yt-dlp-batch-builder"
-version = "1.0.6"
-description = "build a yt-dlp batch file from local YouTube watch later playslist HTML"
+version = "1.1.0"
+description = "build a yt-dlp batch file from local YouTube watch later playlist HTML"
 authors = ["atloo1 <15357562+atloo1@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
@@ -10,15 +10,13 @@ readme = "README.md"
 python = "^3.9"
 click = "^8.1.7"
 
-[tool.poetry.dev-dependencies]
-
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.4.4"
-pre-commit = "^3.7.1"
-mypy = "^1.10.0"
+mypy = "^1.13.0"
+pre-commit = "^4.0.1"
+ruff = "^0.8.0"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
