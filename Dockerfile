@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.9-slim AS base
+FROM python:3.13-slim AS base
 
 # Python quirks:
 # [1] don't write pyc files
