@@ -144,7 +144,7 @@ docker rm yt-dlp-batch-builder yt-dlp
 ### run
 
 ```
-poetry install --without dev    
+poetry install --without dev
 poetry run python -m yt_dlp_batch_builder.main
 ```
 
