@@ -24,22 +24,17 @@ git clone https://github.com/atloo1/yt-dlp-batch-builder.git
 cd yt-dlp-batch-builder/
 ```
 
+Download [your YouTube "Watch later" playlist](https://www.youtube.com/playlist?list=WL). Defaults are assumed: `C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube.htm"` for Windows & `~/Downloads/"Watch later - YouTube.html"` for Unix.
+
 ## run with Docker:
 
 ### prerequisites
 
 - [docker](https://docs.docker.com/get-started/get-docker/)
 
-```
-docker build . -t yt_dlp_batch_builder
-```
-
 ### part 1
 
-Download [your YouTube "Watch later" playlist](https://www.youtube.com/playlist?list=WL). Defaults are assumed: `C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube.htm"` for Windows & `~/Downloads/"Watch later - YouTube.html"` for Unix.
-
 ```
-cd <this-repo-root>
 docker build . -t yt-dlp-batch-builder
 ```
 
@@ -146,7 +141,7 @@ docker rm yt-dlp-batch-builder yt-dlp
 
 ```
 poetry install --without dev
-poetry run python -m yt_dlp_batch_builder.main
+poetry run python -m yt_dlp_batch_builder.main --help
 ```
 
 ### develop
