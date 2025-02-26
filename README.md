@@ -57,7 +57,7 @@ docker run `
     --name yt-dlp `
     jauderho/yt-dlp:latest `
     -a yt_dlp_batch.txt `
-    -f "bv[height=720]+ba[acodec=opus][ext=webm]" `
+    -f "bv[height>=720][height<1080]+ba[acodec=opus][ext=webm]/bv[height>=480][height<720]+ba[acodec=opus][ext=webm]" `
     -o "%(title)s_%(channel)s.%(ext)s" `
     --embed-chapters `
     --embed-subs `
@@ -101,7 +101,7 @@ docker run \
     --name yt-dlp \
     jauderho/yt-dlp:latest \
     -a yt_dlp_batch.txt \
-    -f "bv[height=720]+ba[acodec=opus][ext=webm]" \
+    -f "bv[height>=720][height<1080]+ba[acodec=opus][ext=webm]/bv[height>=480][height<720]+ba[acodec=opus][ext=webm]" \
     -o "%(title)s_%(channel)s.%(ext)s" \
     --embed-chapters \
     --embed-subs \
