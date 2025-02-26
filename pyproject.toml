@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "yt-dlp-batch-builder"
-version = "1.1.2"
+version = "1.1.3"
 description = "build a yt-dlp batch file from local YouTube watch later playlist HTML"
 authors = ["atloo1 <15357562+atloo1@users.noreply.github.com>"]
 license = "MIT"
