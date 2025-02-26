@@ -24,7 +24,7 @@ git clone https://github.com/atloo1/yt-dlp-batch-builder.git
 cd yt-dlp-batch-builder/
 ```
 
-Download [your YouTube "Watch later" playlist](https://www.youtube.com/playlist?list=WL). Defaults are assumed: `C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube.htm"` for Windows & `~/Downloads/"Watch later - YouTube.html"` for Unix.
+Download [your YouTube "Watch later" playlist](https://www.youtube.com/playlist?list=WL). Defaults are assumed: `~\Downloads\"Watch later - YouTube.htm"` for Windows & `~/Downloads/"Watch later - YouTube.html"` for Unix.
 
 ## run with Docker:
 
@@ -43,17 +43,17 @@ docker build . -t yt-dlp-batch-builder
 #### programmatic
 
 ```
-Rename-Item -Path C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube.htm" -NewName watch_later.html
+Rename-Item -Path ~\Downloads\"Watch later - YouTube.htm" -NewName watch_later.html
 docker run `
-    -v C:\Users\$env:USERNAME\Downloads\watch_later.html:/app/watch_later.html `
+    -v ~\Downloads\watch_later.html:/app/watch_later.html `
     --name yt-dlp-batch-builder `
     yt-dlp-batch-builder `
     --input-filepath watch_later.html `
     --output-filepath yt_dlp_batch.txt
-docker cp yt-dlp-batch-builder:/app/yt_dlp_batch.txt C:\Users\$env:USERNAME\Downloads
+docker cp yt-dlp-batch-builder:/app/yt_dlp_batch.txt ~\Downloads
 # optionally edit yt_dlp_batch.txt
 docker run `
-    -v C:\Users\$env:USERNAME\Downloads\yt_dlp_batch.txt:/downloads/yt_dlp_batch.txt `
+    -v ~\Downloads\yt_dlp_batch.txt:/downloads/yt_dlp_batch.txt `
     --name yt-dlp `
     jauderho/yt-dlp:latest `
     -a yt_dlp_batch.txt `
@@ -64,11 +64,11 @@ docker run `
     --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")' `
     --restrict-filenames `
     --sponsorblock-remove all
-docker cp yt-dlp:/downloads/. C:\Users\$env:USERNAME\Videos\youtube
-rm C:\Users\$env:USERNAME\Downloads\"Watch later - YouTube_files\" -Recurse
-rm C:\Users\$env:USERNAME\Downloads\watch_later.html
-rm C:\Users\$env:USERNAME\Downloads\yt_dlp_batch.txt
-rm C:\Users\$env:USERNAME\Videos\youtube\yt_dlp_batch.txt
+docker cp yt-dlp:/downloads/. ~\Videos\youtube
+rm ~\Downloads\"Watch later - YouTube_files\" -Recurse
+rm ~\Downloads\watch_later.html
+rm ~\Downloads\yt_dlp_batch.txt
+rm ~\Videos\youtube\yt_dlp_batch.txt
 ```
 
 #### interactive
