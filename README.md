@@ -45,15 +45,15 @@ docker build . -t yt-dlp-batch-builder
 ```
 Rename-Item -Path ~\Downloads\"Watch later - YouTube.htm" -NewName watch_later.html
 docker run `
-    -v ~\Downloads\watch_later.html:/app/watch_later.html `
+    -v C:\Users\$env:USERNAME\Downloads\watch_later.html:/app/watch_later.html `
     --name yt-dlp-batch-builder `
     yt-dlp-batch-builder `
     --input-filepath watch_later.html `
     --output-filepath yt_dlp_batch.txt
-docker cp yt-dlp-batch-builder:/app/yt_dlp_batch.txt ~\Downloads
+docker cp yt-dlp-batch-builder:/app/yt_dlp_batch.txt C:\Users\$env:USERNAME\Downloads
 # optionally edit yt_dlp_batch.txt
 docker run `
-    -v ~\Downloads\yt_dlp_batch.txt:/downloads/yt_dlp_batch.txt `
+    -v C:\Users\$env:USERNAME\Downloads\yt_dlp_batch.txt:/downloads/yt_dlp_batch.txt `
     --name yt-dlp `
     jauderho/yt-dlp:latest `
     -a yt_dlp_batch.txt `
@@ -64,7 +64,7 @@ docker run `
     --exec 'mv {} $(echo {} | tr "[:upper:]" "[:lower:]")' `
     --restrict-filenames `
     --sponsorblock-remove all
-docker cp yt-dlp:/downloads/. ~\Videos\youtube
+docker cp yt-dlp:/downloads/. C:\Users\$env:USERNAME\Videos\youtube
 rm ~\Downloads\"Watch later - YouTube_files\" -Recurse
 rm ~\Downloads\watch_later.html
 rm ~\Downloads\yt_dlp_batch.txt
