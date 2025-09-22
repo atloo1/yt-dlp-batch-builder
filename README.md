@@ -109,6 +109,7 @@ docker run \
     --restrict-filenames \
     --sponsorblock-remove all
 docker cp yt-dlp:/downloads/. ~/Videos/youtube
+rm -rf ~/Downloads/TODO Watch later - YouTube_files
 rm ~/Downloads/watch_later.html
 rm ~/Downloads/yt_dlp_batch.txt
 rm ~/Videos/youtube/yt_dlp_batch.txt
